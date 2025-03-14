@@ -1,7 +1,7 @@
 ---
 title: "I Hate Parenthesis"
 date: 2022-09-17T13:32:32-05:00
-draft: true
+draft: false
 katex: true
 mermaid: true
 ---
@@ -95,9 +95,9 @@ of if statements that we have in Python and Rust and Go and every other
 programming language descended from C. This situation came up for me in a
 project I was working on, except the expression I needed to use twice was even
 bigger, and I ended up assigning it to a variable. But the cost of hoisting an
-expression into a variable is more than just cursor jumping. You also have to
-think of a name for that variable. Again, if the variable is meaningful this
-isn't so hard and is probably a good investment, but in most cases the
+expression into a variable is more than just cursor jumping, because you also
+have to think of a name for that variable. Again, if the variable is meaningful
+this isn't so hard and is probably a good investment, but in most cases the
 expression is not something we want to necessarily assign meaning to. If we name
 it `theres_a_nan`, then maybe we're not making it clear why that matters. So
 maybe we call it `something_went_wrong`, but then we still have to worry if
@@ -122,14 +122,14 @@ structure that looks like this:
 
 ```mermaid
 flowchart BT 
-  D["/"] --> P[+] 
+  D["/"] --> P[<div>+</div>]
   O[1] & S1["√"] --> D
-  P1[+] --> S1
+  P1[<div>+</div>] --> S1
   E11[^] & E12[^] --> P1
   X1[x] & T11[2] --> E11
   Y1[y] & T12[2] --> E12
   S2["√"] --> P
-  P2[+] --> S2
+  P2[<div>+</div>] --> S2
   E21[^] --> P2
   X2[x] --> E21
   T21[2] --> E21
@@ -149,14 +149,14 @@ This corresponds to the structure
 
 ```mermaid
 flowchart BT 
-  D["/"] --> P[+] 
+  D["/"] --> P[<div>+</div>] 
   O[1] --> D
   R1[r] --> D
   R2[r] --> P
 
   R[r] --> EQ[=]
   S1["√"] --> EQ
-  P1[+] --> S1
+  P1[<div>+</div>] --> S1
   E11[^] --> P1
   X1[x] --> E11
   T11[2] --> E11
@@ -170,10 +170,10 @@ solution:
 
 ```mermaid
 flowchart BT 
-  D["/"] --> P[+] 
+  D["/"] --> P[<div>+</div>] 
   O[1] --> D
   S1["√"] --> D
-  P1[+] --> S1
+  P1[<div>+</div>] --> S1
   E11[^] --> P1
   X1[x] --> E11
   T11[2] --> E11
@@ -199,6 +199,13 @@ try using pronouns to write our expression:
 $$\frac 1 {\sqrt{x^2 + y^2}} + \text{him}$$
 
 but it is not clear whether $\text{him}$ refers to $x^2$, $x^2 + y^2$, or what.
+In math we can do a version of this by repeating just the root of the duplicate
+expression and eliding the rest:
+
+$$\frac 1 {\sqrt{x^2 + y^2}} + \sqrt{...}$$
+
+To my knowledge no one has added this feature to a programming language yet, but
+it might be feasible.
 
 <!-- TODO: dedup these two paragraphs ^ v -->
 
@@ -218,7 +225,7 @@ Consider an expression with the following structure:
 
 ```mermaid
 flowchart BT
-  m1[*] & m2[*] --> p[+]
+  m1[<div>*</div>] & m2[<div>*</div>] --> p[<div>+</div>]
   e1[^] & e2[^] --> m1
   e3[^] & e4[^] --> m2
   a[a] & t1[2] --> e1
@@ -235,8 +242,8 @@ However, now consider this similar looking structure:
 
 ```mermaid
 flowchart BT
-  m[*] & t[2] --> e[^]
-  p1[+] & p2[+] --> m
+  m[<div>*</div>] & t[2] --> e[^]
+  p1[<div>+</div>] & p2[<div>+</div>] --> m
   a[a] & b[b] --> p1
   c[c] & d[d] --> p2
 ```

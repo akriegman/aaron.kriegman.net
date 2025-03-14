@@ -3,3 +3,7 @@
 function new {
 	hugo new content blog/$1.md
 }
+
+function publish {
+	scp -r real_public/* ak2313@webserver.srcf.net:~/public_html
+}
