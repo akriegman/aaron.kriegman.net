@@ -5,5 +5,5 @@ function new {
 }
 
 function publish {
-	scp -r real_public/* ak2313@webserver.srcf.net:~/public_html
+	rsync -av real_public/ ak2313@webserver.srcf.net:~/public_html/
 }
