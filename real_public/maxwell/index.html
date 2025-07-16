@@ -109,6 +109,18 @@
             return false;
         }
 
+        function mousePressed() {
+            gateOpen = true;
+            gate.visible = false;
+            return false;
+        }
+
+        function mouseReleased() {
+            gateOpen = false;
+            gate.visible = true;
+            return false;
+        }
+
         function windowResized() {
             resizeCanvas(windowWidth, windowHeight);
         }
