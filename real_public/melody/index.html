@@ -82,6 +82,10 @@
     </p>
     <p style="text-align: right;"><a href="/">More from Aaron</a></p>
 
+    <audio id="silence">
+      <source src="/melody/2-seconds-of-silence.mp3" type="audio/mp3"></source>
+    </audio>
+
     <script>
       const synth = new Tone.Synth().toDestination();
       synth.oscillator.type = "sine";
@@ -147,6 +151,7 @@
       reset();
 
       function playMelody() {
+        document.getElementById("silence").play(); // disgusting hack to get audio to play on ios 🤮
         const now = Tone.now();
         melody.forEach((note, index) => {
           if (index === outOfTuneNote) {
