@@ -1,3 +1,7 @@
+# aaah.run
+
+This was originally a Hugo site at aaron.kriegman.net. Now it is a static site at aaah.run. Messing around with templates turned out to be totally not worth the time. I have left the skeleton of the Hugo site in this repo. I still use it to compile new posts from markdown to html, and you can still use the theme if you want. Old README below.
+
 # aaron.kriegman.net
 
 My website, with a simple Hugo theme based off of Lexi Hale's
